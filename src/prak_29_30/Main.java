@@ -11,12 +11,11 @@ public class Main {
     {
         int n = 10;
         Scanner scan = new Scanner(System.in);
-        String regex = "[^ [а-яa-z0-9] ]|";
-        String regex1 = "[, ]";
+        String regex = "([^а-яa-z0-9])";
         String sentence = scan.nextLine();
         String sentence_low = sentence.toLowerCase();
         System.out.println(sentence_low);
-        String[] str = sentence_low.split(regex+regex1);
+        String[] str = sentence_low.split(regex);
         Map<String, Long> slova = Arrays.stream(str).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
         if(slova.size() < n) n = slova.size();
